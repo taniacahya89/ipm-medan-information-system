@@ -93,3 +93,8 @@ body {
 @media (max-width: 700px) {
   .hero-city-img { display: none !important; }
 }
+
+/* Spasial map cards — responsive grid collapse */
+@media (max-width: 640px) {
+  .map-card-grid { grid-template-columns: 1fr !important; }
+}
