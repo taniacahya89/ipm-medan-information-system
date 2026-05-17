@@ -6,7 +6,13 @@ import Footer from '../components/Footer';
 const tabs = [
   { key: 'ik',  label: 'Indeks Kesehatan (IK)',     color: '#185FA5', light: '#E6F1FB' },
   { key: 'ip',  label: 'Indeks Pendidikan (IP)',     color: '#1D9E75', light: '#E1F5EE' },
-  { key: 'ipm', label: 'Indeks Pembangunan Manusia', color: '#BA7517', light: '#FAEEDA' },
+  {
+    key: 'ipm',
+    label: 'Indeks Pembangunan Manusia',
+    color: '#BA7517',
+    light: '#FAEEDA',
+    intro: 'IPM (Indeks Pembangunan Manusia) adalah angka yang menggambarkan seberapa sejahtera dan berkualitas hidup warga di suatu daerah — dilihat dari umur panjang, pendidikan, dan kemampuan ekonomi. Skalanya 0–100. Makin tinggi, makin baik. IPM Medan di angka 82+ termasuk kategori sangat tinggi di Indonesia. Dua garis di grafik ini hampir berhimpit, artinya perhitungan mandiri sangat akurat dibanding data resmi BPS.',
+  },
 ];
 
 // layout: 'side'  → gambar kiri, keterangan kanan (untuk peta portrait/square)
@@ -118,7 +124,6 @@ const sections = {
       title: 'IPM Data dan IPM BPS',
       subtitle: 'Perbandingan IPM Perhitungan Mandiri vs Data Resmi BPS',
       img: '/ipm-data-dan-ipm-bps.jpeg',
-      intro: 'IPM (Indeks Pembangunan Manusia) adalah angka yang menggambarkan seberapa sejahtera dan berkualitas hidup warga di suatu daerah — dilihat dari umur panjang, pendidikan, dan kemampuan ekonomi. Skalanya 0–100. Makin tinggi, makin baik. IPM Medan di angka 82+ termasuk kategori sangat tinggi di Indonesia. Dua garis di grafik ini hampir berhimpit, artinya perhitungan mandiri sangat akurat dibanding data resmi BPS.',
       bullets: [
         'IPM Medan terus naik dari 81 (2019) ke 82,61 (2023).',
         'Ada sedikit penurunan di 2020 — wajar karena pandemi Covid-19 memukul ekonomi dan layanan kesehatan.',
@@ -439,6 +444,27 @@ export default function Spasial() {
 
       {/* Map cards */}
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '0 2.5rem 4rem' }}>
+        {/* Tab intro — hanya untuk tab yang punya intro */}
+        {activeTabData.intro && (
+          <div style={{
+            display: 'flex', gap: 14, alignItems: 'flex-start',
+            padding: '1.1rem 1.25rem',
+            background: activeTabData.light,
+            border: `1px solid ${activeTabData.color}33`,
+            borderLeft: `4px solid ${activeTabData.color}`,
+            borderRadius: '0 12px 12px 0',
+            marginBottom: '1.75rem',
+          }}>
+            <div style={{ fontSize: 22, flexShrink: 0, marginTop: 1 }}>💡</div>
+            <p style={{
+              margin: 0,
+              fontSize: '13.5px', color: 'var(--text-mid)', lineHeight: 1.8,
+            }}>
+              {activeTabData.intro}
+            </p>
+          </div>
+        )}
+
         {sections[activeTab].map((section, i) => (
           <MapCard key={i} section={section} />
         ))}
