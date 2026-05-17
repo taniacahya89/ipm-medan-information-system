@@ -31,10 +31,16 @@ export default function About() {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem', maxWidth: 860, margin: '0 auto', flexWrap: 'wrap' }}>
           <div style={{
             width: 88, height: 88, borderRadius: '50%',
-            background: 'linear-gradient(135deg, var(--teal), var(--teal-dark))',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: 700, color: 'white', flexShrink: 0,
-          }}>A</div>
+            border: '2.5px solid rgba(29,158,117,0.35)',
+            boxShadow: '0 4px 18px rgba(29,158,117,0.18)',
+            overflow: 'hidden', flexShrink: 0,
+          }}>
+            <img
+              src="/foto-diri.jpeg"
+              alt="Foto Profil"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
           <div style={{ flex: 1, minWidth: 200 }}>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', fontWeight: 700, color: 'var(--text)', marginBottom: 4 }}>Penulis</div>
             <div style={{ fontSize: 14, color: 'var(--teal-dark)', fontWeight: 500, marginBottom: 8 }}>Mahasiswa Sistem Informasi Keruangan</div>

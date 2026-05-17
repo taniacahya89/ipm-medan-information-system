@@ -22,61 +22,111 @@ export default function Cover() {
   const navigate = useNavigate();
   return (
     <div style={{ minHeight: '100vh', paddingTop: 60 }}>
-      {/* Hero */}
+      {/* Hero — full-bleed image with text overlay */}
       <section style={{
         position: 'relative', overflow: 'hidden',
-        padding: '6rem 2.5rem 4rem',
-        background: 'var(--bg)',
         minHeight: 'calc(100vh - 60px)',
-        display: 'flex', flexDirection: 'column', justifyContent: 'center',
+        display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
       }}>
-        {/* Grid BG */}
+        {/* Background image */}
+        <img
+          src="/medan-horizontal.png"
+          alt="Kota Medan"
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center 35%',
+            filter: 'saturate(0.75) brightness(0.55)',
+            zIndex: 0,
+          }}
+        />
+
+        {/* Gradient overlays */}
+        {/* Bottom-up dark for text legibility */}
         <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'linear-gradient(rgba(29,158,117,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(29,158,117,0.04) 1px, transparent 1px)',
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: 'linear-gradient(to top, rgba(10,10,9,0.92) 0%, rgba(10,10,9,0.55) 45%, rgba(10,10,9,0.15) 75%, transparent 100%)',
+        }} />
+        {/* Left vignette */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: 'linear-gradient(to right, rgba(10,10,9,0.4) 0%, transparent 60%)',
+        }} />
+        {/* Subtle teal tint at bottom */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', zIndex: 1,
+          background: 'linear-gradient(to top, rgba(15,110,86,0.18) 0%, transparent 100%)',
+        }} />
+
+        {/* Grid pattern overlay */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
           pointerEvents: 'none',
         }} />
-        {/* Orbs */}
-        <div style={{ position: 'absolute', borderRadius: '50%', filter: 'blur(80px)', pointerEvents: 'none', width: 500, height: 500, background: 'rgba(29,158,117,0.12)', right: -100, top: -100 }} />
-        <div style={{ position: 'absolute', borderRadius: '50%', filter: 'blur(80px)', pointerEvents: 'none', width: 300, height: 300, background: 'rgba(93,202,165,0.1)', left: '20%', bottom: 0 }} />
 
-        <div style={{ position: 'relative', maxWidth: 760 }}>
+        {/* Content */}
+        <div style={{ position: 'relative', zIndex: 2, padding: '0 2.5rem 4rem', maxWidth: 900, width: '100%' }}>
+
+          {/* Eyebrow badge */}
           <div className="fade-up fade-up-1" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             fontFamily: "'DM Mono', monospace",
-            fontSize: '11.5px', color: 'var(--teal-dark)',
-            background: 'var(--teal-light)',
-            border: '1px solid rgba(29,158,117,0.25)',
+            fontSize: '11px', color: '#5DCAA5',
+            background: 'rgba(29,158,117,0.18)',
+            border: '1px solid rgba(93,202,165,0.35)',
+            backdropFilter: 'blur(8px)',
             padding: '5px 14px', borderRadius: 100,
-            marginBottom: '1.5rem', letterSpacing: '0.03em',
+            marginBottom: '1.5rem', letterSpacing: '0.06em',
           }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--teal)', display: 'inline-block' }} />
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#5DCAA5', display: 'inline-block' }} />
             Universitas Negeri Malang · Sistem Informasi Keruangan
           </div>
 
+          {/* Main heading — white on image */}
           <h1 className="fade-up fade-up-2" style={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
-            fontWeight: 700, lineHeight: 1.15,
-            color: 'var(--text)', marginBottom: '1.25rem',
+            fontSize: 'clamp(2.6rem, 6vw, 4.4rem)',
+            fontWeight: 700, lineHeight: 1.1,
+            color: '#FFFFFF',
+            marginBottom: '1.25rem',
+            textShadow: '0 2px 20px rgba(0,0,0,0.4)',
           }}>
-            Indeks Pembangunan<br /><span style={{ color: 'var(--teal)' }}>Manusia</span> (IPM)
+            Indeks Pembangunan<br />
+            <span style={{ color: '#5DCAA5' }}>Manusia</span>{' '}
+            <span style={{ color: 'rgba(255,255,255,0.55)', fontWeight: 400, fontSize: '0.65em', fontFamily: "'DM Mono', monospace", letterSpacing: '0.04em' }}>(IPM)</span>
           </h1>
 
-          <p className="fade-up fade-up-3" style={{ fontSize: 17, color: 'var(--text-mid)', lineHeight: 1.75, maxWidth: 560, marginBottom: '2.5rem' }}>
-            Analisis spasial dan kajian literatur mengenai Indeks Pembangunan Manusia
-            dengan studi kasus <strong>Kota Medan, Sumatera Utara</strong> — mencakup dimensi
-            kesehatan, pendidikan, dan pengeluaran.
+          {/* Location tag */}
+          <div className="fade-up fade-up-2" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            fontFamily: "'DM Mono', monospace", fontSize: 12,
+            color: 'rgba(255,255,255,0.6)',
+            marginBottom: '1.25rem',
+            letterSpacing: '0.08em',
+          }}>
+            <span style={{ fontSize: 14 }}>📍</span>
+            KOTA MEDAN, SUMATERA UTARA
+          </div>
+
+          <p className="fade-up fade-up-3" style={{
+            fontSize: 16, color: 'rgba(255,255,255,0.72)',
+            lineHeight: 1.75, maxWidth: 520, marginBottom: '2rem',
+          }}>
+            Analisis spasial dan kajian literatur mengenai Indeks Pembangunan Manusia —
+            mencakup dimensi <strong style={{ color: 'rgba(255,255,255,0.9)' }}>kesehatan, pendidikan, dan pengeluaran</strong>.
           </p>
 
-          <div className="fade-up fade-up-4" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: '3.5rem' }}>
+          {/* CTA buttons */}
+          <div className="fade-up fade-up-4" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: '3rem' }}>
             <button
               onClick={() => navigate('/literatur')}
               style={{
                 padding: '12px 28px', background: 'var(--teal)', color: 'white',
                 fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500,
                 border: 'none', borderRadius: 10, cursor: 'pointer', transition: 'all 0.2s',
+                boxShadow: '0 4px 20px rgba(29,158,117,0.45)',
               }}
               onMouseEnter={e => { e.currentTarget.style.background = 'var(--teal-dark)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'var(--teal)'; e.currentTarget.style.transform = 'none'; }}
@@ -86,19 +136,30 @@ export default function Cover() {
             <button
               onClick={() => navigate('/spasial')}
               style={{
-                padding: '12px 28px', background: 'transparent', color: 'var(--text-mid)',
+                padding: '12px 28px', background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.85)',
                 fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 400,
-                border: '1px solid var(--border-mid)', borderRadius: 10, cursor: 'pointer', transition: 'all 0.2s',
+                border: '1px solid rgba(255,255,255,0.25)', borderRadius: 10, cursor: 'pointer',
+                transition: 'all 0.2s', backdropFilter: 'blur(8px)',
               }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--teal)'; e.currentTarget.style.color = 'var(--teal)'; e.currentTarget.style.background = 'var(--teal-light)'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-mid)'; e.currentTarget.style.color = 'var(--text-mid)'; e.currentTarget.style.background = 'transparent'; }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.45)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; }}
             >
               Lihat Peta Spasial
             </button>
           </div>
 
-          <div className="fade-up fade-up-4" style={{ display: 'flex', gap: '2.5rem', flexWrap: 'wrap', paddingTop: '2.5rem', borderTop: '1px solid var(--border)' }}>
-            {stats.map((s) => <StatisticCard key={s.label} num={s.num} label={s.label} animate />)}
+          {/* Stats row */}
+          <div className="fade-up fade-up-4" style={{
+            display: 'flex', gap: '2rem', flexWrap: 'wrap',
+            paddingTop: '2rem',
+            borderTop: '1px solid rgba(255,255,255,0.12)',
+          }}>
+            {stats.map((s) => (
+              <div key={s.label}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#5DCAA5', lineHeight: 1 }}>{s.num}</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4, fontFamily: "'DM Sans', sans-serif" }}>{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

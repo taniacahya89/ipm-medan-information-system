@@ -88,3 +88,8 @@ body {
 .popup-box { animation: popIn 0.25s cubic-bezier(.22,1,.36,1); }
 
 .map-tooltip { position: absolute; pointer-events: none; background: rgba(28,28,26,0.92); color: white; font-size: 12px; padding: 6px 12px; border-radius: 8px; white-space: nowrap; z-index: 20; opacity: 0; transition: opacity 0.15s; }
+
+/* Hero image responsive — sembunyikan di layar kecil */
+@media (max-width: 700px) {
+  .hero-city-img { display: none !important; }
+}
