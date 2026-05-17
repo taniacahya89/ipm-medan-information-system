@@ -67,7 +67,9 @@ export default function Cover() {
         }} />
 
         {/* Content */}
-        <div style={{ position: 'relative', zIndex: 2, padding: '0 2.5rem 4rem', maxWidth: 900, width: '100%' }}>
+        <div style={{ position: 'relative', zIndex: 2, padding: '0 1.25rem 2.5rem', maxWidth: 900, width: '100%' }}
+          className="cover-content"
+        >
 
           {/* Eyebrow badge */}
           <div className="fade-up fade-up-1" style={{
@@ -165,7 +167,7 @@ export default function Cover() {
       </section>
 
       {/* Navigation Cards */}
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '4rem 2.5rem' }}>
+      <div className="cover-nav-section" style={{ maxWidth: 860, margin: '0 auto', padding: '4rem 2.5rem' }}>
         <SectionHeader eyebrow="Navigasi" title="Isi Website" />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14, marginTop: '1.5rem' }}>
           {navCards.map((c) => <NavigationCard key={c.title} {...c} />)}

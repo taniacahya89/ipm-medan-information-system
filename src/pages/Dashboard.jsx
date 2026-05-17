@@ -216,7 +216,7 @@ export default function Dashboard() {
   return (
     <div style={{ minHeight: '100vh', paddingTop: 60 }}>
       {/* Dark header */}
-      <div style={{ padding: '3rem 2.5rem 2rem', background: 'linear-gradient(160deg, #1C1C1A 0%, #2a2a28 100%)', color: 'white' }}>
+      <div className="dashboard-header" style={{ padding: '3rem 2.5rem 2rem', background: 'linear-gradient(160deg, #1C1C1A 0%, #2a2a28 100%)', color: 'white' }}>
         <div style={{ maxWidth: 860, margin: '0 auto' }}>
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: '#5DCAA5', letterSpacing: '0.1em', marginBottom: 8 }}>
             DASHBOARD · SISTEM INFORMASI KERUANGAN
@@ -227,10 +227,11 @@ export default function Dashboard() {
           <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', marginBottom: '1.5rem' }}>
             Visualisasi data statistik dan spasial tiga dimensi Indeks Pembangunan Manusia
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }} className="kpi-row">
             {kpis.map(k => (
               <div
                 key={k.label}
+                className="kpi-card"
                 style={{
                   background: 'rgba(255,255,255,0.07)',
                   border: '1px solid rgba(255,255,255,0.1)',
@@ -250,10 +251,10 @@ export default function Dashboard() {
       </div>
 
       {/* Charts section */}
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '2rem 2.5rem' }}>
+      <div className="dashboard-charts" style={{ maxWidth: 860, margin: '0 auto', padding: '2rem 2.5rem' }}>
 
         {/* Row 1: Radar + Rings */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
+        <div className="chart-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
           {/* Radar */}
           <div style={chartBox()}>
             <div style={{ fontSize: '14.5px', fontWeight: 500, color: 'var(--text)', marginBottom: 2 }}>
@@ -294,7 +295,7 @@ export default function Dashboard() {
                 Perkembangan nilai IPM dan komponen dimensi dari tahun ke tahun
               </div>
             </div>
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }} className="tren-filters">
               {[['ipm', 'IPM'], ['ik', 'Kesehatan'], ['ip', 'Pendidikan'], ['ipen', 'Pengeluaran'], ['all', 'Semua']].map(([key, lbl]) => (
                 <button
                   key={key}

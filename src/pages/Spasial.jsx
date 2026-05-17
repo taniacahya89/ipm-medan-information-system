@@ -244,9 +244,9 @@ function SideLayout({ section }) {
       borderRadius: 18, overflow: 'hidden', boxShadow: 'var(--shadow)', marginBottom: '1.5rem',
     }}>
       <CardHeader title={title} subtitle={subtitle} accent={accent} />
-      <div style={{ display: 'flex', minHeight: 320 }}>
+      <div className="side-layout-body" style={{ display: 'flex', minHeight: 320 }}>
         {/* Image — 55% */}
-        <div style={{ flex: '0 0 55%', position: 'relative' }}>
+        <div className="side-layout-img" style={{ flex: '0 0 55%', position: 'relative' }}>
           <img
             src={img} alt={title}
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
@@ -255,7 +255,7 @@ function SideLayout({ section }) {
         {/* Divider */}
         <div style={{ width: 1, background: 'var(--border)', flexShrink: 0 }} />
         {/* Keterangan — 45% */}
-        <div style={{ flex: 1, padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div className="side-layout-text" style={{ flex: 1, padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{
             fontSize: 10, fontFamily: "'DM Mono', monospace",
             color: accent, letterSpacing: '0.12em',
@@ -325,7 +325,7 @@ function DualLayout({ section }) {
       borderRadius: 18, overflow: 'hidden', boxShadow: 'var(--shadow)', marginBottom: '1.5rem',
     }}>
       <CardHeader title={title} subtitle={subtitle} accent={accent} />
-      <div style={{ padding: '1.25rem 1.5rem 1.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+      <div className="dual-layout-grid" style={{ padding: '1.25rem 1.5rem 1.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
         {imgs.map((item) => (
           <div key={item.label} style={{
             border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden',
@@ -378,7 +378,7 @@ export default function Spasial() {
   return (
     <div style={{ minHeight: '100vh', paddingTop: 60 }}>
       {/* Header */}
-      <div style={{
+      <div className="spasial-header" style={{
         padding: '3rem 2.5rem 2rem',
         background: 'linear-gradient(160deg, var(--purple-light) 0%, var(--bg) 60%)',
         borderBottom: '1px solid var(--border)',
@@ -404,7 +404,7 @@ export default function Spasial() {
       </div>
 
       {/* Tabs */}
-      <div style={{
+      <div className="spasial-tabs" style={{
         display: 'flex', gap: 4,
         padding: '1.25rem 2.5rem',
         borderBottom: '1px solid var(--border)',
@@ -430,7 +430,7 @@ export default function Spasial() {
       </div>
 
       {/* Section label */}
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '2rem 2.5rem 0' }}>
+      <div className="spasial-label" style={{ maxWidth: 860, margin: '0 auto', padding: '2rem 2.5rem 0' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.5rem' }}>
           <div style={{ width: 3, height: 20, borderRadius: 2, background: activeTabData.color }} />
           <div style={{
@@ -443,7 +443,7 @@ export default function Spasial() {
       </div>
 
       {/* Map cards */}
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '0 2.5rem 4rem' }}>
+      <div className="spasial-content" style={{ maxWidth: 860, margin: '0 auto', padding: '0 2.5rem 4rem' }}>
         {/* Tab intro — hanya untuk tab yang punya intro */}
         {activeTabData.intro && (
           <div style={{

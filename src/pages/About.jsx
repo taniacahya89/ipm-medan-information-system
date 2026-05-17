@@ -134,12 +134,12 @@ export default function About() {
     <div style={{ minHeight: '100vh', paddingTop: 60 }}>
 
       {/* ── Profile Hero ── */}
-      <div style={{
+      <div className="about-header" style={{
         padding: '3.5rem 2.5rem 2rem',
         background: 'linear-gradient(160deg, var(--teal-light) 0%, var(--bg) 60%)',
         borderBottom: '1px solid var(--border)',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', maxWidth: 860, margin: '0 auto', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', maxWidth: 860, margin: '0 auto', flexWrap: 'wrap' }} className="profile-hero-inner">
           {/* Avatar */}
           <div style={{
             width: 96, height: 96, borderRadius: '50%',
@@ -185,7 +185,7 @@ export default function About() {
       </div>
 
       {/* ── Tabs ── */}
-      <div style={{
+      <div className="about-tabs" style={{
         display: 'flex', gap: 4,
         padding: '1.25rem 2.5rem',
         borderBottom: '1px solid var(--border)',
@@ -211,14 +211,14 @@ export default function About() {
       </div>
 
       {/* ── Content ── */}
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '3rem 2.5rem 4rem' }}>
+      <div className="about-content" style={{ maxWidth: 860, margin: '0 auto', padding: '3rem 2.5rem 4rem' }}>
 
         {/* ── BIO ── */}
         {activeTab === 'Bio' && (
           <>
             <SectionHeader eyebrow="Profil" title="Bio" />
             <div className="card" style={{ marginBottom: '1.5rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+              <div className="bio-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
                 {[
                   { label: 'Nama',          val: 'Meylia Ardaneswari' },
                   { label: 'Departemen',    val: 'Geografi' },
@@ -254,9 +254,9 @@ export default function About() {
         {activeTab === 'Achievement' && (
           <>
             <SectionHeader eyebrow="Prestasi" title="Achievement" />
-            <div style={{
+            <div className="achievement-grid" style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
               gap: '1.25rem',
             }}>
               {achievements.map((a, i) => (
