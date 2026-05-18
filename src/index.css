@@ -113,6 +113,14 @@ body {
   nav > div:last-child {
     display: none !important;
   }
+  /* Logo institusi lebih kecil di mobile */
+  .nav-logo-group {
+    gap: 4px !important;
+  }
+  .nav-logo-circle {
+    width: 26px !important;
+    height: 26px !important;
+  }
   /* Nav links scroll horizontal, font lebih kecil */
   nav > div > a {
     padding: 5px 10px !important;
@@ -159,7 +167,7 @@ body {
     padding: 1.5rem 1.25rem 0 !important;
   }
   .spasial-content {
-    padding: 0 1.25rem 3rem !important;
+    padding: 0 0.75rem 3rem !important;
   }
 
   /* ── Dashboard: KPI cards wrap rapi ── */
@@ -210,14 +218,37 @@ body {
   .side-layout-img {
     flex: none !important;
     width: 100% !important;
-    height: 220px !important;
+    /* Biarkan tinggi mengikuti gambar secara natural */
+    height: auto !important;
+    min-height: 200px;
+    max-height: 420px;
+  }
+  .side-layout-img-el {
+    /* Di mobile: tampilkan gambar penuh tanpa crop */
+    height: auto !important;
+    max-height: 420px;
+    object-fit: contain !important;
+  }
+  .side-layout-divider {
+    display: none !important;
   }
   .side-layout-text {
     padding: 1.25rem !important;
   }
 
+  /* ── Spasial: StackLayout — hapus margin samping agar gambar full width ── */
+  .stack-layout-img-wrap {
+    margin: 1rem 0.75rem 0 !important;
+  }
+
   /* ── Spasial: DualLayout → 1-col ── */
   .dual-layout-grid {
     grid-template-columns: 1fr !important;
+    padding: 1rem 0.75rem 1rem !important;
+  }
+  /* Gambar dual layout: aspect ratio lebih pendek di mobile */
+  .dual-layout-grid img {
+    aspect-ratio: 3/4 !important;
+    object-fit: contain !important;
   }
 }

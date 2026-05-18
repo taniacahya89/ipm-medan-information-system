@@ -8,6 +8,12 @@ const navItems = [
   { to: '/spasial',   label: 'Informasi Spasial' },
 ];
 
+const logos = [
+  { src: '/logo-geo.jpeg', alt: 'Logo Geografi' },
+  { src: '/logo-fis.jpeg', alt: 'Logo FIS' },
+  { src: '/logo-um.jpeg',  alt: 'Logo UM' },
+];
+
 export default function Navbar() {
   const navigate = useNavigate();
   return (
@@ -19,8 +25,37 @@ export default function Navbar() {
       borderBottom: '1px solid var(--border)',
       display: 'flex', alignItems: 'center',
       padding: '0 2.5rem',
-      gap: '2rem',
+      gap: '1.5rem',
     }}>
+      {/* Logo grup institusi — paling kiri */}
+      <div className="nav-logo-group" style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+        {logos.map(({ src, alt }) => (
+          <div
+            key={src}
+            title={alt}
+            className="nav-logo-circle"
+            style={{
+              width: 34, height: 34,
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: '1.5px solid var(--border)',
+              background: '#fff',
+              flexShrink: 0,
+              boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+            }}
+          >
+            <img
+              src={src} alt={alt}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Divider */}
+      <div style={{ width: 1, height: 28, background: 'var(--border)', flexShrink: 0 }} />
+
+      {/* Brand */}
       <button
         onClick={() => navigate('/')}
         style={{
@@ -38,6 +73,7 @@ export default function Navbar() {
         Literatur IPM
       </button>
 
+      {/* Nav links */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1, overflowX: 'auto' }}>
         {navItems.map(({ to, label }) => (
           <NavLink
@@ -63,6 +99,7 @@ export default function Navbar() {
         ))}
       </div>
 
+      {/* Badge */}
       <div style={{
         fontFamily: "'DM Mono', monospace",
         fontSize: 11, color: 'var(--text-muted)',

@@ -249,11 +249,12 @@ function SideLayout({ section }) {
         <div className="side-layout-img" style={{ flex: '0 0 55%', position: 'relative' }}>
           <img
             src={img} alt={title}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            className="side-layout-img-el"
+            style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block', background: '#f5f5f3' }}
           />
         </div>
         {/* Divider */}
-        <div style={{ width: 1, background: 'var(--border)', flexShrink: 0 }} />
+        <div className="side-layout-divider" style={{ width: 1, background: 'var(--border)', flexShrink: 0 }} />
         {/* Keterangan — 45% */}
         <div className="side-layout-text" style={{ flex: 1, padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{
@@ -281,11 +282,11 @@ function StackLayout({ section }) {
       {intro && <IntroBox text={intro} accent={accent} accentLight={accentLight} />}
 
       {/* Image full width */}
-      <div style={{ position: 'relative', margin: '1.25rem 1.5rem 0' }}>
+      <div className="stack-layout-img-wrap" style={{ position: 'relative', margin: '1.25rem 1.5rem 0' }}>
         <img
           src={img} alt={title}
           style={{
-            width: '100%', height: 'auto', maxHeight: 380,
+            width: '100%', height: 'auto',
             objectFit: 'contain', objectPosition: 'center',
             display: 'block', borderRadius: 10,
             border: '1px solid var(--border)',
@@ -331,10 +332,10 @@ function DualLayout({ section }) {
             border: '1px solid var(--border)', borderRadius: 12, overflow: 'hidden',
           }}>
             {/* Image */}
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: 'relative', background: '#f5f5f3' }}>
               <img
                 src={item.src} alt={item.label}
-                style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', display: 'block' }}
+                style={{ width: '100%', aspectRatio: '4/5', objectFit: 'contain', display: 'block' }}
               />
               {/* Label badge */}
               <div style={{
